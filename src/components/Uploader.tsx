@@ -28,7 +28,7 @@ export default function Uploader() {
       >
         Select image to create Ascii
       </button>
-      <input ref={input} type="file" hidden onChange={onChange} accept="image/png, image/jpeg" />
+      <input ref={input} type="file" hidden onChange={onChange} accept="image/*" />
     </>
   )
 }
