@@ -4,7 +4,7 @@ import ImageToAscii from './components/ImageToAscii';
 
 const App: Component = () => {
   return (
-    <main class="bg-black text-white">
+    <main class="bg-black text-white overflow-x-hidden">
       <section class="p-10">
         <ImageContextProvider>
           <ImageToAscii />

@@ -15,9 +15,9 @@ export default function Ascii() {
     }
   }
   return (
-    <div class="mx-auto w-full">
+    <div class="mx-auto w-full p-4 bg-slate-600 flex flex-col gap-2 rounded-md">
       <div class="flex justify-center">
-        <pre ref={pre} class="font-mono leading-3 mt-4 overflow-x-scroll overflow-y-hidden">
+        <pre ref={pre} class="font-mono leading-3 overflow-x-scroll overflow-y-hidden">
           <For each={coordinates()}>{(row, x) =>
             <>
               <For each={row}>{(_, y) => <Cell x={x()} y={y()} />}</For>
