@@ -18,9 +18,9 @@ export default function Ascii() {
     <div class="mx-auto w-full">
       <div class="flex justify-center">
         <pre ref={pre} class="font-mono leading-3 mt-4 overflow-x-scroll overflow-y-hidden">
-          <For each={coordinates()}>{(row) =>
+          <For each={coordinates()}>{(row, x) =>
             <>
-              <For each={row}>{(hex) => <Cell hex={hex} />}</For>
+              <For each={row}>{(_, y) => <Cell x={x()} y={y()} />}</For>
               {"\n"}
             </>
           }</For>

@@ -9,6 +9,7 @@ type Context = {
   hexToCharMap: Accessor<Map<string, string>>,
   setHexToCharMap: Setter<Map<string, string>>
   setHexToChar: (hex: string, char: string) => void,
+  getCharForCoordinate: (x: number, y: number) => string
 }
 
 export const ImageContext = createContext<Context>();
@@ -41,6 +42,10 @@ export const ImageContextProvider = (props: Props) => {
         return map
       })
     },
+    getCharForCoordinate: (x: number, y: number) => {
+      const hex = coordinates()[x][y]
+      return hexToCharMap().get(hex)
+    }
   }
   return (
     <ImageContext.Provider value={value}>

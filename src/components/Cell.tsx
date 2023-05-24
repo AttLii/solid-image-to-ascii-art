@@ -1,10 +1,10 @@
-import { createEffect } from "solid-js";
 import { useImageContext } from "../contexts/image";
 
 type Props = {
-  hex: string;
+  x: number;
+  y: number;
 }
-export default function Cell({ hex }: Props) {
-  const { hexToCharMap } = useImageContext()
-  return <>{hexToCharMap().get(hex)}</>
+export default function Cell({ x, y }: Props) {
+  const { getCharForCoordinate } = useImageContext()
+  return <>{getCharForCoordinate(x, y)}</>
 }
