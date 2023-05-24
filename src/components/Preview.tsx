@@ -28,6 +28,7 @@ export default function Preview() {
     canvas.width = e.currentTarget.naturalWidth;
     canvas.height = e.currentTarget.naturalHeight;
     context.drawImage(e.currentTarget, 0, 0);
+
     const newCoords: string[][] = []
     const hexToCharMap = new Map<string, string>()
     const hexToAmountMap = new Map<string, number>()
