@@ -4,7 +4,7 @@ type Props = {
   hex: string
 }
 export default function ColorSetting({ hex }: Props) {
-  const { hexToCharMap, setHexToChar } = useImageContext()
+  const { hexToCharMap, setHexToChar, hexToAmountMap } = useImageContext()
 
   const onInput = (e: InputEvent & {
     currentTarget: HTMLInputElement;
@@ -17,18 +17,24 @@ export default function ColorSetting({ hex }: Props) {
   }
 
   return (
-    <div class="flex align-middle justify-between gap-1">
-      <div class="w-8 aspect-square rounded-sm" style={{
-        background: hex
-      }} />
-      <input
-        class="text-black rounded-sm p-1"
-        type="text"
-        maxlength="1"
-        data-hex={hex}
-        value={hexToCharMap().get(hex)}
-        onInput={onInput}
-      />
+    <div>
+      <p class="pl-10 mb-1">
+        <span hidden>color {hex} amount</span>
+        ({hexToAmountMap().get(hex)})
+      </p>
+      <div class="flex align-middle justify-between gap-2">
+        <div class="w-8 aspect-square rounded-sm" style={{
+          background: hex
+        }} />
+        <input
+          class="text-black rounded-sm p-1"
+          type="text"
+          maxlength="1"
+          data-hex={hex}
+          value={hexToCharMap().get(hex)}
+          onInput={onInput}
+        />
+      </div>
     </div >
   )
 }

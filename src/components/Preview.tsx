@@ -3,7 +3,7 @@ import { useImageContext } from "../contexts/image"
 import { rgbaToHex } from "../utils/color"
 
 export default function Preview() {
-  const { file, setCoordinates, setHexToCharMap } = useImageContext()
+  const { file, setCoordinates, setHexToCharMap, setHexToAmountMap } = useImageContext()
   const [src, setSrc] = createSignal("")
 
   createEffect(() => {
@@ -30,6 +30,7 @@ export default function Preview() {
     context.drawImage(e.currentTarget, 0, 0);
     const newCoords: string[][] = []
     const hexToCharMap = new Map<string, string>()
+    const hexToAmountMap = new Map<string, number>()
 
     for (let y = 0; y < canvas.width; ++y) {
       const row: string[] = []
@@ -40,11 +41,15 @@ export default function Preview() {
         if (!hexToCharMap.has(hex)) {
           hexToCharMap.set(hex, String.fromCharCode(65 + hexToCharMap.size))
         }
+
+        const amount = hexToAmountMap.has(hex) ? hexToAmountMap.get(hex) : 0
+        hexToAmountMap.set(hex, (amount as number) + 1)
       }
       newCoords.push(row)
     }
     setCoordinates(newCoords)
     setHexToCharMap(hexToCharMap)
+    setHexToAmountMap(hexToAmountMap)
     console.timeEnd("Conversion time");
   }
 

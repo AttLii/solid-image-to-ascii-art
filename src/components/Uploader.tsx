@@ -24,9 +24,9 @@ export default function Uploader() {
       <button
         onClick={onClick}
         disabled={Boolean(input)}
-        class="w-full p-5 bg-slate-700 enabled:cursor-pointer disabled:cursor-default"
+        class="uppercase w-full p-5 bg-slate-700 enabled:cursor-pointer disabled:cursor-default"
       >
-        Click to upload image
+        Select image to create Ascii
       </button>
       <input ref={input} type="file" hidden onChange={onChange} accept="image/png, image/jpeg" />
     </>

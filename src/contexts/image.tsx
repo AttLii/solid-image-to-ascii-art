@@ -9,7 +9,9 @@ type Context = {
   hexToCharMap: Accessor<Map<string, string>>,
   setHexToCharMap: Setter<Map<string, string>>
   setHexToChar: (hex: string, char: string) => void,
-  getCharForCoordinate: (x: number, y: number) => string
+  getCharForCoordinate: (x: number, y: number) => string,
+  hexToAmountMap: Accessor<Map<string, number>>,
+  setHexToAmountMap: Setter<Map<string, number>>
 }
 
 export const ImageContext = createContext<Context>();
@@ -28,6 +30,7 @@ export const ImageContextProvider = (props: Props) => {
   const [file, setFile] = createSignal<File | undefined>()
   const [coordinates, setCoordinates] = createSignal<string[][]>([], { equals: false })
   const [hexToCharMap, setHexToCharMap] = createSignal<Map<string, string>>(new Map(), { equals: false })
+  const [hexToAmountMap, setHexToAmountMap] = createSignal<Map<string, number>>(new Map(), { equals: false })
 
   const value = {
     file,
@@ -44,8 +47,10 @@ export const ImageContextProvider = (props: Props) => {
     },
     getCharForCoordinate: (x: number, y: number) => {
       const hex = coordinates()[x][y]
-      return hexToCharMap().get(hex)
-    }
+      return hexToCharMap().get(hex) || ""
+    },
+    hexToAmountMap,
+    setHexToAmountMap
   }
   return (
     <ImageContext.Provider value={value}>
