@@ -23,7 +23,7 @@ export default function ColorSetting({ hex }: Props) {
         ({hexToAmountMap().get(hex)})
       </p>
       <div class="flex align-middle justify-between gap-2">
-        <div class="w-8 aspect-square rounded-sm" style={{
+        <div class="w-8 aspect-square rounded-sm border-black border-2" style={{
           background: hex
         }} />
         <input
