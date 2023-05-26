@@ -33,9 +33,9 @@ export default function Preview() {
     const hexToCharMap = new Map<string, string>()
     const hexToAmountMap = new Map<string, number>()
 
-    for (let y = 0; y < canvas.width; ++y) {
+    for (let y = 0; y < canvas.height; ++y) {
       const row: string[] = []
-      for (let x = 0; x < canvas.height; ++x) {
+      for (let x = 0; x < canvas.width; ++x) {
         const [r, g, b, a] = context.getImageData(x, y, 1, 1).data;
         const hex = rgbaToHex(r, g, b, a);
         row.push(hex)
